@@ -160,9 +160,10 @@ def prepare_replacements(replacements: tuple, versions: Dict[str, str]) -> List[
 
 @click.command()
 @click.option('--whattheversion-endpoint', default='https://whattheversion.hutter.cloud/api')
-@click.option('--file', required=True, type=click.Path(exists=True))
+@click.option('--file', type=click.Path(exists=True), multiple=True, required=True)
 @click.option("--replace", "-r", type=(str, str), multiple=True, required=True)
-def update_versions(whattheversion_endpoint: str, file: str, replace: tuple):
+def update_versions(whattheversion_endpoint: str, file: tuple, replace: tuple):
+
     logging.info(f'Retrieve versions from {whattheversion_endpoint}')
     versions = retrieve_versions(endpoint=whattheversion_endpoint)
     logging.info(f'Found the following versions: {versions}')
@@ -171,26 +172,28 @@ def update_versions(whattheversion_endpoint: str, file: str, replace: tuple):
     replacements = prepare_replacements(replacements=replace, versions=versions)
     logging.info(f'Found the follwoing replacements: {replacements}')
 
-    logging.info(f'Search and replace in file {file}')
-    # load all lines from file to run search and replace over them
-    # file will be opened again for overwriting.
-    file_contents = []
-    with open(file, 'r') as f:
-        file_contents = f.readlines()
+    for fi in file:
+        logging.info(f'Search and replace in file {fi}')
+        # load all lines from file to run search and replace over them
+        # file will be opened again for overwriting.
 
-    for i in range(len(file_contents)):
-        for r in replacements:
-            match = re.match(r.pattern, file_contents[i])
-            if match:
-                if len(match.groups()) != 1:
-                    logging.warning(f'Found match but no or to many groups for replacement!')
-                    continue
-                logging.info(f'Found match for {r.pattern}, replace match with {r.version}')
-                file_contents[i] = f'{file_contents[i][0:match.start(1)]}{r.version}{file_contents[i][match.end(1):]}'
+        file_contents = []
+        with open(fi, 'r') as f:
+            file_contents = f.readlines()
 
-    # write file with updated content
-    with open(file, 'w') as f:
-        f.writelines(file_contents)
+        for i in range(len(file_contents)):
+            for r in replacements:
+                match = re.match(r.pattern, file_contents[i])
+                if match:
+                    if len(match.groups()) != 1:
+                        logging.warning(f'Found match but no or to many groups for replacement!')
+                        continue
+                    logging.info(f'Found match for {r.pattern}, replace match with {r.version}')
+                    file_contents[i] = f'{file_contents[i][0:match.start(1)]}{r.version}{file_contents[i][match.end(1):]}'
+
+        # write file with updated content
+        with open(fi, 'w') as f:
+            f.writelines(file_contents)
 
 if __name__ == '__main__':
     update_versions()
