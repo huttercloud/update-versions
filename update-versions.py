@@ -99,6 +99,12 @@ VERSIONS=dict(
         chart='argo-cd',
         regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
     ),
+    PROMETHEUS=dict(
+        type='helm',
+        registry='https://prometheus-community.github.io/helm-charts',
+        chart='prometheus',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
 )
 
 def retrieve_versions(endpoint: str) -> Dict[str, str]:
