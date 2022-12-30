@@ -10,6 +10,7 @@ The versions are stored during script execution with keys like 'PIHOLE' or 'WIRE
 The replace parameter for the script can be added multiple times.
 The first part of the parameter is the regular expression to look for in the file, the regular expression requires
 one group (e.g. one string in `(` and `)`). Quotes `"` and single quotes `'` need to be escaped with a `\`.
+The second part of the parameter describes the version string to replace the groups content with
 
 ## example query
 
