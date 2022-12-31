@@ -105,6 +105,30 @@ VERSIONS=dict(
         chart='prometheus',
         regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
     ),
+    GRAFANA=dict(
+        type='helm',
+        registry='https://grafana.github.io/helm-charts',
+        chart='grafana',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
+    LOKI=dict(
+        type='helm',
+        registry='https://grafana.github.io/helm-charts',
+        chart='loki',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
+    PROMTAIL=dict(
+        type='helm',
+        registry='https://grafana.github.io/helm-charts',
+        chart='promtail',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
+    TEMPO=dict(
+        type='helm',
+        registry='https://grafana.github.io/helm-charts',
+        chart='tempo',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
 )
 
 def retrieve_versions(endpoint: str) -> Dict[str, str]:
