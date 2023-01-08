@@ -129,6 +129,12 @@ VERSIONS=dict(
         chart='tempo',
         regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
     ),
+    TAUTULLI=dict(
+        type='docker',
+        registry='ghcr.io',
+        repository='tautulli/tautulli',
+        regexp='^v[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
 )
 
 def retrieve_versions(endpoint: str) -> Dict[str, str]:
