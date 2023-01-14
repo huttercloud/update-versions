@@ -135,8 +135,25 @@ VERSIONS=dict(
         repository='tautulli/tautulli',
         regexp='^v[0-9]+\.?[0-9]+\.?[0-9]+$',
     ),
+    OVERSEERR=dict(
+        type='docker',
+        registry='registry.hub.docker.com',
+        repository='linuxserver/overseerr',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
+    CALIBRE=dict(
+        type='docker',
+        registry='registry.hub.docker.com',
+        repository='linuxserver/calibre',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
+    CALIBREWEB=dict(
+        type='docker',
+        registry='registry.hub.docker.com',
+        repository='linuxserver/calibre',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
 )
-
 def retrieve_versions(endpoint: str) -> Dict[str, str]:
     """
     retrieve specified versions in VERSIONS and return the found values
