@@ -157,7 +157,7 @@ VERSIONS=dict(
         type='docker',
         registry='registry.hub.docker.com',
         repository='linuxserver/readarr',
-        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+-develop$', # only develop versions are currently available
     ),
 )
 def retrieve_versions(endpoint: str) -> Dict[str, str]:
