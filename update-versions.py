@@ -153,7 +153,7 @@ VERSIONS=dict(
         repository='linuxserver/calibre',
         regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
     ),
-    CALIBREWEB=dict(
+    READARR=dict(
         type='docker',
         registry='registry.hub.docker.com',
         repository='linuxserver/readarr',
