@@ -165,6 +165,12 @@ VERSIONS=dict(
         repository='linuxserver/prowlarr',
         regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
     ),
+    JENKIKNS=dict(
+        type='helm',
+        registry='https://charts.jenkins.io',
+        chart='jenkins',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
 )
 def retrieve_versions(endpoint: str) -> Dict[str, str]:
     """
