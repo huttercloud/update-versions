@@ -165,7 +165,7 @@ VERSIONS=dict(
         repository='linuxserver/prowlarr',
         regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
     ),
-    JENKIKNS=dict(
+    JENKINS=dict(
         type='helm',
         registry='https://charts.jenkins.io',
         chart='jenkins',
