@@ -171,6 +171,12 @@ VERSIONS=dict(
         chart='jenkins',
         regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
     ),
+    ONEPASSWORD_CONNECT=dict(
+        type='helm',
+        registry='https://1password.github.io/connect-helm-charts',
+        chart='connect',
+        regexp='^[0-9]+\.?[0-9]+\.?[0-9]+$',
+    ),
 )
 def retrieve_versions(endpoint: str) -> Dict[str, str]:
     """
